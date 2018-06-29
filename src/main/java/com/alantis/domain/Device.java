@@ -10,16 +10,15 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-
-
-
-
 /**
  *
  * @author cesi
  */
 @Document
 public class Device { 
+
+    public Device() {
+    }
     
     @Id
     private String id;
