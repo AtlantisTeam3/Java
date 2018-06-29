@@ -25,12 +25,8 @@ public class BackofficeBean implements BackofficeRemote{
     public boolean validationPermission(String id_user,String password){
         MongoClient mongoClient = MongoClients.create();
         MongoDatabase database = mongoClient.getDatabase("test");
-        
         MongoCollection<Document> collection = database.getCollection("test");
         long result = collection.count(and(eq("user",id_user),eq("password",password)));
-        
         return result != 0;
     }
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }

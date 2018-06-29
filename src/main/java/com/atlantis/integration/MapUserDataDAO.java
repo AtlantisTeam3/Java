@@ -38,18 +38,18 @@ public class MapUserDataDAO implements UserDataDAO {
             user.setName(doc.getString("name"));
             System.out.println(user.getName());
             
-            user.setId_user(doc.getString("id_user"));
-            System.out.println(user.getName());
+//            user.setId_user(doc.getString("id_user"));
+//            System.out.println(user.getId_user());
             
             user.setEmail(doc.getString("email"));
-            System.out.println(user.getName());
+            System.out.println(user.getEmail());
             
-            user.setPassword(doc.getString("password"));
-            System.out.println(user.getName());
+//            user.setPassword(doc.getString("password"));
+//            System.out.println(user.getPassword());
             
             users.add(user);
-            System.out.println(users.toString());
-            System.out.println("--------------------------------------------------------------------------");
+            System.out.println(users.toString()+ "/n");
+//            System.out.println("--------------------------------------------------------------------------");
         }
         System.out.println("******************************************************************************");
         return users;
