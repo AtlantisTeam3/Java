@@ -6,21 +6,18 @@
 package com.alantis.domain;
 
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.io.Serializable;
 
 
 /**
  *
  * @author cesi
  */
-@Document
-public class Device { 
+public class Device implements Serializable { 
 
     public Device() {
     }
     
-    @Id
     private String id;
     
     private String Device_mac;

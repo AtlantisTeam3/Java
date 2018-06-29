@@ -5,31 +5,32 @@
  */
 package com.alantis.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.io.Serializable;
 
 /**
  *
  * @author cesi
  */
-@Document
-public class User {
+public class User implements Serializable {
 
     public User() {
     }
-    
-    @Id
-    private String id;
-    
+
+   
+
+    private String Email;
+    private String password;    
     private String id_user;
     private String name;
 
-    public User(String id_user, String name, String password) {
+    public User(String id_user, String name, String password,String Email) {
         this.id_user = id_user;
         this.name = name;
         this.password = password;
+        this.Email=Email;
+        
     }
-    private String password;
+
 
     public String getName() {
         return name;
@@ -53,6 +54,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
     
 }

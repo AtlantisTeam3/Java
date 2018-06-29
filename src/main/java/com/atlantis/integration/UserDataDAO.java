@@ -3,19 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.atlantis.facade;
+package com.atlantis.integration;
 
 import com.alantis.domain.User;
 import java.util.List;
-import org.bson.Document;
 
 /**
  *
  * @author cesi
  */
-@javax.ejb.Remote
-public interface MobileServiceRemote {    
-    //public boolean saveData(String user);
-    public List<User> getListDevice(String id_user);
-    
+public interface UserDataDAO {
+    public  List<User> getUser(String Id_user);
 }

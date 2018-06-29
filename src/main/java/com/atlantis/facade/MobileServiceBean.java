@@ -8,18 +8,12 @@ package com.atlantis.facade;
 
 
 
-import com.alantis.domain.Device;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Updates.combine;
-import static com.mongodb.client.model.Updates.set;
-import com.mongodb.client.result.UpdateResult;
+import com.alantis.domain.User;
+import com.atlantis.integration.UserDataDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import org.bson.Document;
 
 
@@ -30,6 +24,10 @@ import org.bson.Document;
  */
 @Stateless
 public class MobileServiceBean implements MobileServiceRemote  {
+    
+    @Inject
+    private UserDataDAO UserData;
+    
     
 //    @Override
 //    public boolean saveData(String user){
@@ -60,16 +58,15 @@ public class MobileServiceBean implements MobileServiceRemote  {
 //    }
     
     @Override
-    public FindIterable<Document> getListDevice(String id_user){
-//        MongoClient mongoClient = MongoClients.create();
-//        MongoDatabase database = mongoClient.getDatabase("test");
-//        MongoCollection<Document> collection = database.getCollection("test");
-//        
-//        FindIterable<Document> device = collection.find(eq("user","user"));
-//        List<Document> device =new ArrayList<>(device);
-        return null;
-        
+    public List<User> getListDevice(String id_user){
+        return UserData.getUser(id_user);    
     }
+    
+//    @Override
+//    public static List<> getListDevice(String id_user,){
+//        
+//        
+//    }
 }
 
 
