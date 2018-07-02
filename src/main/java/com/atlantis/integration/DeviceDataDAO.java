@@ -5,10 +5,14 @@
  */
 package com.atlantis.integration;
 
+import com.alantis.domain.Device;
+import java.util.List;
+
 /**
  *
  * @author cesi
  */
-public interface RawDataDAO {
-    
+public interface DeviceDataDAO {
+    public List<Device> getDevice(String Id_user);
+    public boolean changeName(String id_device, String new_name);
 }

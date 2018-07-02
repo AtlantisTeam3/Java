@@ -13,5 +13,6 @@ import java.util.List;
  * @author cesi
  */
 public interface UserDataDAO {
-    public  List<User> getUser(String Id_user);
+    public  User getUserData(String Id_user);
+    public List<User> getUser(String Id_user);
 }

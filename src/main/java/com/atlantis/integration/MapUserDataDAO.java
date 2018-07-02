@@ -6,14 +6,15 @@
 package com.atlantis.integration;
 
 import com.alantis.domain.User;
+import com.atlantis.Database.ConnectionDataBase;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import org.bson.Document;
 
@@ -24,35 +25,50 @@ import org.bson.Document;
 @ApplicationScoped
 public class MapUserDataDAO implements UserDataDAO {
     
+    @EJB
+    ConnectionDataBase Mongo;
+    
     @Override
     public  List<User> getUser(String Id_user){
+        
         List<User> users = new ArrayList<>();
         User user=new User();
         
-        MongoClient mongoClient = MongoClients.create();
+        MongoClient mongoClient = Mongo.getMongoClient();
         MongoDatabase database = mongoClient.getDatabase("test");
         MongoCollection<Document> collection = database.getCollection("test");
+        
+        
         FindIterable<Document>  device = collection.find(eq("id_user",Id_user));
-        System.out.println("******************************************************************************");
+        
         for(Document doc :device){
             user.setName(doc.getString("name"));
-            System.out.println(user.getName());
             
-//            user.setId_user(doc.getString("id_user"));
-//            System.out.println(user.getId_user());
+            user.setId_user(doc.getString("id_user"));
             
             user.setEmail(doc.getString("email"));
-            System.out.println(user.getEmail());
             
-//            user.setPassword(doc.getString("password"));
-//            System.out.println(user.getPassword());
+            user.setPassword(doc.getString("password"));
             
             users.add(user);
-            System.out.println(users.toString()+ "/n");
-//            System.out.println("--------------------------------------------------------------------------");
         }
-        System.out.println("******************************************************************************");
+        
         return users;
+    }
+    
+    @Override
+    public User getUserData (String id_user){   
+        User user=new User();
+        
+        MongoClient mongoClient = Mongo.getMongoClient();
+        MongoDatabase database = mongoClient.getDatabase("test");
+        MongoCollection<Document> collection = database.getCollection("test");
+        FindIterable<Document> doc = collection.find(eq("id_user",id_user));
+        for(Document info :doc){
+        user.setName(info.getString("name"));
+        user.setEmail(info.getString("email"));
+        }
+        return user;
     }
     
 }

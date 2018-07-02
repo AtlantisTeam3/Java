@@ -5,9 +5,9 @@
  */
 package com.atlantis.facade;
 
+import com.alantis.domain.Device;
 import com.alantis.domain.User;
 import java.util.List;
-import org.bson.Document;
 
 /**
  *
@@ -16,6 +16,11 @@ import org.bson.Document;
 @javax.ejb.Remote
 public interface MobileServiceRemote {    
     //public boolean saveData(String user);
-    public List<User> getListDevice(String id_user);
+    public List<Device> getListDevice(String id_device);
+
+    public User getInfoUser(String id_user);
+    
+    public boolean changeNameDevice(String id_device, String name_device);
+
     
 }

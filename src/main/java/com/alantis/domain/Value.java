@@ -5,11 +5,16 @@
  */
 package com.alantis.domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author cesi
  */
-public class Value {
+public class Value implements Serializable {
+
+    public Value() {
+    }
     
     private String Value;
     private String DateTime;

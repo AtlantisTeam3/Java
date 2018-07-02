@@ -16,9 +16,7 @@ import java.io.Serializable;
 public class Device implements Serializable { 
 
     public Device() {
-    }
-    
-    private String id;
+    } 
     
     private String Device_mac;
     private String Device_name;
@@ -26,10 +24,6 @@ public class Device implements Serializable {
     private String DateTimeFirst;
     private String type;
     private Value value;
-
-    public Value getValues() {
-        return value;
-    }
 
     public Device(String Device_mac, String Device_name, String user, String DateTimeFirst, String type, Value value, String DateTime) {
         this.Device_mac = Device_mac;
@@ -40,6 +34,10 @@ public class Device implements Serializable {
         this.value = value;
     }
 
+    public Value getValues() {
+        return value;
+    }
+    
     public void setValues(Value values) {
         this.value = values;
     }

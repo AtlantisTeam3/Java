@@ -8,14 +8,13 @@ package com.atlantis.facade;
 
 
 
+import com.alantis.domain.Device;
 import com.alantis.domain.User;
+import com.atlantis.integration.DeviceDataDAO;
 import com.atlantis.integration.UserDataDAO;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import org.bson.Document;
-
 
 
 /**
@@ -27,6 +26,9 @@ public class MobileServiceBean implements MobileServiceRemote  {
     
     @Inject
     private UserDataDAO UserData;
+    
+    @Inject
+    private DeviceDataDAO DeviceData;
     
     
 //    @Override
@@ -58,15 +60,19 @@ public class MobileServiceBean implements MobileServiceRemote  {
 //    }
     
     @Override
-    public List<User> getListDevice(String id_user){
-        return UserData.getUser(id_user);    
+    public List<Device> getListDevice(String id_device){
+        return DeviceData.getDevice(id_device);    
     }
     
-//    @Override
-//    public static List<> getListDevice(String id_user,){
-//        
-//        
-//    }
+    @Override
+    public  User getInfoUser(String id_user){
+        return UserData.getUserData(id_user);
+    }
+
+    @Override
+    public boolean changeNameDevice(String id_device, String name_device) {
+        return DeviceData.changeName(id_device, name_device); 
+    }
 }
 
 
