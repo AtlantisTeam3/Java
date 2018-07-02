@@ -7,6 +7,7 @@ package com.alantis.domain;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -31,16 +32,17 @@ public class Device implements Serializable {
         this.user = user;
         this.DateTimeFirst = DateTimeFirst;
         this.type = type;
+        this.value=value;
+    }
+
+    public Value getValue() {
+        return value;
+    }
+
+    public void setValue(Value value) {
         this.value = value;
     }
 
-    public Value getValues() {
-        return value;
-    }
-    
-    public void setValues(Value values) {
-        this.value = values;
-    }
 
     public String getType() {
         return type;
