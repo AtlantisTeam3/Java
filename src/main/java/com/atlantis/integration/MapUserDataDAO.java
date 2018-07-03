@@ -29,26 +29,22 @@ public class MapUserDataDAO implements UserDataDAO {
     ConnectionDataBase Mongo;
     
     @Override
-    public  List<User> getUser(String Id_user){
+    public  List<User> getUser(){
         
         List<User> users = new ArrayList<>();
-        User user=new User();
         
         MongoClient mongoClient = Mongo.getMongoClient();
         MongoDatabase database = mongoClient.getDatabase("test");
         MongoCollection<Document> collection = database.getCollection("test");
         
         
-        FindIterable<Document>  device = collection.find(eq("id_user",Id_user));
+        FindIterable<Document>  device = collection.find();
         
         for(Document doc :device){
+            User user=new User();
             user.setName(doc.getString("name"));
             
             user.setId_user(doc.getString("id_user"));
-            
-            user.setEmail(doc.getString("email"));
-            
-            user.setPassword(doc.getString("password"));
             
             users.add(user);
         }

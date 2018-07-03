@@ -10,6 +10,7 @@ package com.atlantis.facade;
 
 import com.alantis.domain.Device;
 import com.alantis.domain.User;
+import com.alantis.domain.Value;
 import com.atlantis.integration.DeviceDataDAO;
 import com.atlantis.integration.UserDataDAO;
 import java.util.List;
@@ -52,23 +53,29 @@ public class MobileServiceBean implements MobileServiceRemote  {
 //
 //        collection.insertOne(document);
 //        }
-//        
-//        
-//        
-//        
+
 //        return true;
 //    }
     
+    // Send all value of one device
     @Override
-    public List<Device> getListDevice(String id_device){
-        return DeviceData.getDevice(id_device);    
+    public List<Value> getDatatDevice(String id_device){
+        return DeviceData.getData(id_device);
     }
     
+    //Send all device for one user
+    @Override
+    public List<Device> getListDevice(String id_user){
+        return DeviceData.getDeviceMobile(id_user);    
+    }
+    
+    //Send information user
     @Override
     public  User getInfoUser(String id_user){
         return UserData.getUserData(id_user);
     }
-
+    
+    //Change name of the device
     @Override
     public boolean changeNameDevice(String id_device, String name_device) {
         return DeviceData.changeName(id_device, name_device); 

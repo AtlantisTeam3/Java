@@ -5,6 +5,9 @@
  */
 package com.atlantis.facade;
 
+import com.alantis.domain.Device;
+import com.alantis.domain.User;
+import java.util.List;
 import javax.ejb.Remote;
 
 /**
@@ -14,4 +17,8 @@ import javax.ejb.Remote;
 @Remote
 public interface BackofficeRemote {
     public boolean validationPermission(String id_user,String password);
+    public List<Device> getListAllDevice();
+    public List<User> getListAllUser();
+    public boolean changeUserDevice(String id_device,String id_user);
+    public void test();
 }

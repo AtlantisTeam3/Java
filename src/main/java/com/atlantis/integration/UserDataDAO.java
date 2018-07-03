@@ -14,5 +14,6 @@ import java.util.List;
  */
 public interface UserDataDAO {
     public  User getUserData(String Id_user);
-    public List<User> getUser(String Id_user);
+    public List<User> getUser();
+    
 }
